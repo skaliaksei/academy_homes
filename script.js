@@ -16,7 +16,14 @@ var password;
 if (!entryData) {
     alert('Вход отменен');
 } else if (entryData === 'Админ') {
-    password = prompt('Пароль:', '123');
+    password = prompt('Пароль:', 'Чёрный Властелин');
+    if(!password) {
+        alert('Вход отменен');
+    } else if(password === 'Чёрный Властелин') {
+        alert('Добро пожаловать!');
+    } else {
+        alert('Пароль неверен');
+    }
 } else {
     alert('Я вас не знаю');
 }
