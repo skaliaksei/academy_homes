@@ -1,32 +1,32 @@
 //Task 1
-// var innerNum = prompt('Введите число');
-// var addNum = prompt('Сколько прибавить?');
-// var minusNum = prompt('Сколько отнять?');
-// var multNum = prompt('На сколько умножить?');
-// var divNum = prompt('На сколько разделить?');
+var innerNum = prompt('Введите число');
+var addNum = prompt('Сколько прибавить?');
+var minusNum = prompt('Сколько отнять?');
+var multNum = prompt('На сколько умножить?');
+var divNum = prompt('На сколько разделить?');
 
-// var outerNum = (Number(innerNum) + Number(addNum) - Number(minusNum)) * Number(multNum) / Number(divNum);
+var outerNum = (Number(innerNum) + Number(addNum) - Number(minusNum)) * Number(multNum) / Number(divNum);
 
-// alert('Формула: (' + innerNum + ' + ' + addNum + ' - ' + minusNum + ') * ' + multNum + ' / ' + divNum + '\n' + 'Результат: ' + outerNum)
+alert('Формула: (' + innerNum + ' + ' + addNum + ' - ' + minusNum + ') * ' + multNum + ' / ' + divNum + '\n' + 'Результат: ' + outerNum)
 
 //Task 2
-// var entryData = prompt('Имя пользователя:', 'Админ');
-// var password;
+var entryData = prompt('Имя пользователя:', 'Админ');
+var password;
 
-// if (!entryData) {
-//     alert('Вход отменен');
-// } else if (entryData === 'Админ') {
-//     password = prompt('Пароль:', 'Чёрный Властелин');
-//     if(!password) {
-//         alert('Вход отменен');
-//     } else if(password === 'Чёрный Властелин') {
-//         alert('Добро пожаловать!');
-//     } else {
-//         alert('Пароль неверен');
-//     }
-// } else {
-//     alert('Я вас не знаю');
-// }
+if (!entryData) {
+    alert('Вход отменен');
+} else if (entryData === 'Админ') {
+    password = prompt('Пароль:', 'Чёрный Властелин');
+    if(!password) {
+        alert('Вход отменен');
+    } else if(password === 'Чёрный Властелин') {
+        alert('Добро пожаловать!');
+    } else {
+        alert('Пароль неверен');
+    }
+} else {
+    alert('Я вас не знаю');
+}
 
 //Task 3
 var message,
@@ -36,9 +36,8 @@ message = (login === 'Вася') ? 'Привет' :
     (login === 'Директор') ? 'Здравствуйте' :
         (login === '') ? 'Нет логина' : '';
 
-
 //Task 4
-var name,
+var yourName,
     surname,
     patronymic,
     age,
@@ -46,18 +45,42 @@ var name,
 var gender; //for store word value from boolean value
 var isPension;
 
-//Entering Full Name data:
+//Entering Surname data:
 var emptyString = true;
 while (emptyString) {
     surname = prompt('Enter your SURNAME:');
-    name = prompt('Enter your NAME:');
+
+    //Validation Surname(empty string)
+    if (surname) {
+        emptyString = false;
+    } else {
+        alert('Error! Your Surname data can not be empty! Try again');
+    }
+}
+
+//Entering Name data:
+emptyString = true;
+while (emptyString) {
+    yourName = prompt('Enter your NAME:');
+
+    //Validation Name(empty string)
+    if (yourName) {
+        emptyString = false;
+    } else {
+        alert('Error! Your Name can not be empty! Try again');
+    }
+}
+
+//Entering Patronymic data:
+emptyString = true;
+while (emptyString) {
     patronymic = prompt('Enter your PATRONYMIC:');
 
     //Validation (empty string)
-    if (name && surname && patronymic) {
+    if (patronymic) {
         emptyString = false;
     } else {
-        alert('Error! Your Full Name data can not be empty! Try again');
+        alert('Error! Your Patronymic data can not be empty! Try again');
     }
 }
 
@@ -79,10 +102,10 @@ isMan = confirm('Are you a man?- Confirm with OK or press on the CANCEL:');
 gender = (isMan) ? 'male' : 'female';
 
 if (isMan) {
-    (age >= 63) ? isPension = 'Yes' : isPension = 'No';
+    isPension = (age >= 63) ? 'Yes' : 'No';
 } else {
-    (age >= 58) ? isPension = 'Yes' : isPension = 'No';
+    isPension = (age >= 58) ? 'Yes' : 'No';
 }
 
 //Output Data:
-alert ('Your Full name is: ' + surname + ' ' + name + ' ' + patronymic + '\n' + 'Now, your age is: ' + age + ' years\nor ' + age * 365 + ' days\nAfter 5 years your age is going to ' + (age + 5) + ' years\nGender: ' + gender +'\nNow you in a pension: ' + isPension);
+alert ('Your Full name is: ' + surname + ' ' + yourName + ' ' + patronymic + '\n' + 'Now, your age is: ' + age + ' years\nor ' + age * 365 + ' days\nAfter 5 years your age is going to ' + (age + 5) + ' years\nGender: ' + gender +'\nNow you in a pension: ' + isPension);
