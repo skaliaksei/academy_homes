@@ -53,3 +53,23 @@ function summArray(arr) {
 }
 
 alert(summArray(storageArray));
+
+// Task 5
+var startRange = 2,
+    endRange = 10;
+var count = 0;
+var arrSimpleNumbers = [];
+
+for (var i = startRange; i <= endRange; i++) {
+     for (var j = (i - 1); j > 1; j--) {
+        if (i % j == 0) {
+            count++;
+        }
+    }
+
+    if(count == 0) {
+        arrSimpleNumbers.push(i);
+    }
+    count = 0;
+}
+console.log(arrSimpleNumbers)
