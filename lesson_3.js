@@ -29,3 +29,27 @@ function isEmpty(obj) {
 
 console.log(isEmpty(emptyObj)); // true
 console.log(isEmpty(fullObj));  // false
+
+// Task 4
+var storageArray = [];
+var answer;
+
+while (true) {
+    answer = prompt('Введите число: ');
+
+    if (answer === '0' || +answer) {
+        storageArray.push(+answer);
+    } else break;
+}
+
+function summArray(arr) {
+    var summ = 0;
+
+    for(var i = 0; i < arr.length; i++) {
+        summ += arr[i];
+    }
+
+    return summ;
+}
+
+alert(summArray(storageArray));
