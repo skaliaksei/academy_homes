@@ -15,3 +15,17 @@ for (var i = 2; i <= 10; i++) {
     if (i % 2 != 0) continue;
     console.log(i);
 }
+
+// Task 3
+var emptyObj = {};
+var fullObj = {name: 'Aliaksei'};
+
+function isEmpty(obj) {
+    for (key in obj) {
+        return false;
+    }
+    return true;
+}
+
+console.log(isEmpty(emptyObj)); // true
+console.log(isEmpty(fullObj));  // false
