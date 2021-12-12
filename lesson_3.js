@@ -60,8 +60,6 @@ var startRange = 2, //Начало диапазона
 var arrSimpleNums = []; //Массив для простых чисел
 
 for (var i = startRange; i <= endRange; i++) {
-    var isSimple = true;
-
     if (checkSimple(i)) {
         arrSimpleNums.push(i);
     }
