@@ -52,6 +52,12 @@ var arrHW = [
     [9, [0]],
     1, 8
 ];
+var x = [1, 2, 3, [], [3]];
+
+for (key in x) {
+    console.log(key + ' : ' + !!x[key] + ' : ' + x[key].length);
+}
+
 
 
 
@@ -59,14 +65,15 @@ function treeSum(arr) {
     var result = 0;
 
     for (key in arr) {
-        if (arr[key].length) {
-            result += treeSum(arr[key]);
-        } else {
-            if (!!arr[key]) {
+        if (arr[key]) {
+            if (arr[key].length && arr[key].length > 0) {
+                result += treeSum(arr[key]);
+            } else if (arr[key] > 0) {
                 result += arr[key];
             }
         }
     }
+
     return result;
 }
 
