@@ -44,16 +44,17 @@ function findDuplicates(entryObject) {
     var resultObject = {};
 
 
-    for (var key in entryObject) {
+    for (var keyOuter in entryObject) {
         var countOfDuplicates = 0;
 
         for (var keyInner in entryObject) {
-            if (entryObject[key] === entryObject[keyInner]) {
+            if (entryObject[keyOuter] === entryObject[keyInner]) {
+                console.log(entryObject[keyOuter])
                 countOfDuplicates += 1;
             }
         }
 
-        console.log(entryObject[key] + ' : ' + countOfDuplicates);
+        console.log(entryObject[keyOuter] + ' : ' + countOfDuplicates);
     }
 
     return resultObject;
@@ -61,4 +62,13 @@ function findDuplicates(entryObject) {
 
 // console.log(findDuplicates(person));
 // console.log(edit(names));
-console.log(findDuplicates(names));
+// console.log(findDuplicates(names));
+
+test(5, 6)
+
+function test(a, b, c, d) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log(d);
+}
