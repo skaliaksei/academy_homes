@@ -157,15 +157,7 @@ gendolf.feed();
 
 
 
-function Rabbit(name) {}
-Rabbit.prototype = {
-  eats: true
-};
 
-var rabbit = new Rabbit();
-
-rabbit.__proto__.eats = 5;
-console.log( rabbit.eats );
 
 Array.prototype.mirror = function() {
     var sum = 0;
