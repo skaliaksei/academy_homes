@@ -44,6 +44,66 @@ function Cat() {
     }
 }
 
+// var barsik = new Cat('Barsik');
+// barsik.dailyNorm(61);
+// barsik.feed().stroke();
+
+function Animal(name) {
+    this.name = name;
+}
+
+Animal.prototype.walk = function() {
+    console.log(this.name + ' Walking');
+}
+
+Cat.prototype = Object.create(Animal.prototype);
+
+function Cat() {
+    Animal.apply(this, arguments);
+}
+
+ Cat.prototype.sayMeow = function() {
+    console.log(this.name + ' Meow ^_^');
+}
+
 var barsik = new Cat('Barsik');
-barsik.dailyNorm(61);
-barsik.feed().stroke();
+
+barsik.sayMeow();
+barsik.walk();
+
+
+
+
+// PROTOTYPE
+function Animal(legs) {
+    var self = this;
+    self.legs = 4;
+};
+
+Animal.prototype.walk = function() {
+    console.log('Walking');
+};
+
+function Cat(name) {
+    Animal.apply(this, arguments) //1 шаг
+    this.name = name;
+}
+
+//Cat.prototype.__proto__ = Animal.prototype;
+Cat.prototype = Object.create(Animal.prototype); //2 шаг
+Cat.prototype.constructor = Cat; //3 шаг
+
+Cat.prototype.sayMeow = function() {
+    console.log('Meow');
+};
+
+Cat.prototype.walk = function() {
+    Animal.prototype.walk.apply(this, arguments);
+    this.sayMeow();
+};
+
+var barsik = new Cat('Barsik');
+console.log(barsik.legs);
+
+
+console.log(barsik instanceof Animal); //true

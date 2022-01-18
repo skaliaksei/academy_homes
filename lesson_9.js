@@ -1,7 +1,7 @@
 // Task_3, Task_4, Task_5
 function Animal(name) {
     var self = this;
-    self._name = name;
+    self.name = name;
     var foodAmount = 50;
 
     self.feed = function() {
