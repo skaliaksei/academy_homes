@@ -1,34 +1,25 @@
 // PROTOTYPE
-function Animal(legs = 4) {
-    var self = this;
-    self.legs = legs;
-};
 
-Animal.prototype.walk = function() {
-    console.log('Walking');
-};
-
-function Cat(legs, name) {
-    Animal.apply(this, arguments) //1 шаг
-    this.name = name;
+function CoffeeMachine(power) {
+    this._power = power;
+    this._waterAmount = 0;
+    this._WATER_HEAT_CAPACITY = 4200;
 }
 
-//Cat.prototype.__proto__ = Animal.prototype;
-Cat.prototype = Object.create(Animal.prototype); //2 шаг
-Cat.prototype.constructor = Cat; //3 шаг
-
-Cat.prototype.sayMeow = function() {
-    console.log('Meow');
+CoffeeMachine.prototype._getTimeToBoil = function() {
+    return this._waterAmount * this._WATER_HEAT_CAPACITY * 80 / this._power;
 };
 
-Cat.prototype.walk = function() {
-    Animal.prototype.walk.apply(this, arguments);
-    this.sayMeow();
+CoffeeMachine.prototype.run = function() {
+    setTimeout(function() {
+        console.log( 'Кофе готов!' );
+    }, this._getTimeToBoil());
 };
 
-var barsik = new Cat(3, 'Barsik');
-console.log(barsik.legs);
-console.log(barsik.name);
+CoffeeMachine.prototype.setWaterAmount = function(amount) {
+    this._waterAmount = amount;
+};
 
-
-console.log(barsik instanceof Animal); //true
+var coffeeMachine = new CoffeeMachine(10000);
+coffeeMachine.setWaterAmount(50);
+coffeeMachine.run();
