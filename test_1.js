@@ -72,3 +72,8 @@ function test(a, b, c, d) {
     console.log(c);
     console.log(d);
 }
+
+
+/******************
+ PROTOTYPE
+ ******************/

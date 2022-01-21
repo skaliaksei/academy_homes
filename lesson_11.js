@@ -1,25 +1,86 @@
-// PROTOTYPE
+//Task_1
+function filterNumbersArr(numbers) {
+    var newArr = [];
 
-function CoffeeMachine(power) {
-    this._power = power;
-    this._waterAmount = 0;
-    this._WATER_HEAT_CAPACITY = 4200;
+    numbers.forEach(function(item, i) {
+        if (item > 0)
+            newArr[newArr.length] = item;
+    });
+
+    return newArr;
 }
 
-CoffeeMachine.prototype._getTimeToBoil = function() {
-    return this._waterAmount * this._WATER_HEAT_CAPACITY * 80 / this._power;
+filterNumbersArr([-1, 0, 2, 34, -2]);
+
+// Task_2
+function firstPositive(arrOfNum) {
+    var positiveNumber = arrOfNum.filter(findPositive);
+
+    function findPositive(v) {
+        return v > 0;
+    }
+
+    return positiveNumber[0];
+}
+
+console.log(firstPositive([-1, 0, 2, 34, -2]))
+
+
+var initialObj = {
+    string: 'Vasya',
+    number: 30,
+    boolean: true,
+    undefined: undefined,
+    null: null,
+    array: [1, 2, 3],
+    object: {
+        string2: 'Petrov',
+        object2: {
+            array2: [{}, {}]
+        },
+        object3: {}
+    },
+    method: function() {
+        alert('Hello');
+    }
 };
 
-CoffeeMachine.prototype.run = function() {
-    setTimeout(function() {
-        console.log( 'Кофе готов!' );
-    }, this._getTimeToBoil());
+var person = {
+    name: 'Aliaksei',
+    age: 36,
+    skills: {
+        HTML: true,
+        React: false
+    },
+    string: 'Vasya',
+    number: 30,
+    boolean: true,
+    undefined: undefined,
+    null: null,
+    array: [1, 2, 3]
 };
 
-CoffeeMachine.prototype.setWaterAmount = function(amount) {
-    this._waterAmount = amount;
-};
+var newPerson = {};
 
-var coffeeMachine = new CoffeeMachine(10000);
-coffeeMachine.setWaterAmount(50);
-coffeeMachine.run();
+for (var key in person) {
+    // console.log(person[key]);
+    newPerson[key] = person[key];
+}
+
+
+
+
+/**************************
+ *******   BIND   *********
+ *************************/
+
+const girl = {
+    user: 'Tania',
+    getUser: function() {
+        return this.user;
+    }
+}
+
+var f1 = girl.getUser;
+var f2 =  girl.getUser.bind(girl)  ;
+// ------------------------------------

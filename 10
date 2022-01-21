@@ -50,24 +50,24 @@
     (+ массивы и функции; NaN не учитывать), а также любого уровня вложенности. Метод isArray использовать можно.
 
     Протестировать работу функции можно на таком примере:
-      var initialObj = {
-          string: 'Vasya',
-          number: 30,
-          boolean: true,
-          undefined: undefined,
-          null: null,
-          array: [1, 2, 3],
-          object: {
-              string2: 'Petrov',
-              object2: {
-                  array2: [{}, {}]
-              },
-              object3: {}
-          },
-          method: function() {
-              alert('Hello');
-          }
-      };
+        var initialObj = {
+            string: 'Vasya',
+            number: 30,
+            boolean: true,
+            undefined: undefined,
+            null: null,
+            array: [1, 2, 3],
+            object: {
+                string2: 'Petrov',
+                object2: {
+                    array2: [{}, {}]
+                },
+                object3: {}
+            },
+            method: function() {
+                alert('Hello');
+            }
+        };
 
       var clonedObj = deepClone(initialObj);
 
