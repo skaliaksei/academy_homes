@@ -2,7 +2,7 @@
 function filterNumbersArr(numbers) {
     var newArr = [];
 
-    numbers.forEach(function(item, i) {
+    numbers.forEach(function(item, i) { //TODO
         if (item > 0)
             newArr[newArr.length] = item;
     });
@@ -42,7 +42,21 @@ function isPalindrome(inputWord) {
 console.log(isPalindrome(word))
 
 // Task_4
-// TODO
+function areAnagrams(firstWord, secondWord) {
+    var output = false;
+
+    firstWord = firstWord.split('').sort().join('');
+    secondWord = secondWord.split('').sort().join('');
+
+    if (firstWord === secondWord)
+        output = true;
+
+    return output;
+}
+
+console.log(areAnagrams('кот', 'отк')); // true
+console.log(areAnagrams('кот', 'атк')); // false
+console.log(areAnagrams('кот', 'отко')); // false
 
 // Task_5
 // TODO
