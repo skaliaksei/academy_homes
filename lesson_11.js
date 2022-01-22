@@ -59,4 +59,14 @@ console.log(areAnagrams('кот', 'атк')); // false
 console.log(areAnagrams('кот', 'отко')); // false
 
 // Task_5
-// TODO
+function divideArr(inputArr, divider) {
+    var outputArr = [];
+
+    for (var i = 0; i < Math.ceil(inputArr.length / divider); i++) {
+        outputArr[i] = inputArr.slice(i * divider, (i * divider) + divider);
+    }
+
+    return outputArr;
+}
+
+divideArr([1, 2, 3, 4, 5, 6, 7, 8], 10);
