@@ -23,64 +23,26 @@ function firstPositive(arrOfNum) {
     return positiveNumber[0];
 }
 
-console.log(firstPositive([-1, 0, 2, 34, -2]))
+console.log(firstPositive([-1, 0, 2, 34, -2]));
 
+// Task_3
+var word = ' ШалАш';
 
+function isPalindrome(inputWord) {
+    var output = false;
+    inputWord = inputWord.trim().toLowerCase();
+    var mirrorWord = inputWord.split('').reverse().join('');
 
+    if (mirrorWord === inputWord)
+        output = true;
 
-var person = {
-    name: 'Aliaksei',
-    age: 36,
-    skills: {
-        HTML: true,
-        React: false
-    },
-    string: 'Vasya',
-    number: 30,
-    boolean: true,
-    undefined: undefined,
-    null: null,
-    array: [1, 2, 3]
-};
-
-var newPerson = {};
-
-for (var key in person) {
-    // console.log(person[key]);
-    newPerson[key] = person[key];
+    return output;
 }
 
+console.log(isPalindrome(word))
 
+// Task_4
+// TODO
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**************************
- *******   BIND   *********
- *************************/
-
-const girl = {
-    user: 'Tania',
-    getUser: function() {
-        return this.user;
-    }
-}
-
-var f1 = girl.getUser;
-var f2 =  girl.getUser.bind(girl)  ;
-// ------------------------------------
+// Task_5
+// TODO

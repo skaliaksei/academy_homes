@@ -46,7 +46,6 @@ Cat.prototype.stroke = function() {
 
 //Task_2
 
-
 var initialObj = {
     string: 'Vasya',
     number: 30,
