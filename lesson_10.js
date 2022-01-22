@@ -40,10 +40,41 @@ Cat.prototype.stroke = function() {
 	return this;
 };
 
-var barsik = new Cat('Barsik');
-barsik.dailyNorm(61);
-barsik.feed().stroke();
+// var barsik = new Cat('Barsik');
+// barsik.dailyNorm(61);
+// barsik.feed().stroke();
 
 //Task_2
 
 
+var initialObj = {
+    string: 'Vasya',
+    number: 30,
+    boolean: true,
+    undefined: undefined,
+    null: null,
+    array: [1, 2, 3],
+    object: {
+        string2: 'Petrov',
+        object2: {
+            array2: [{}, {}]
+        },
+        object3: {}
+    },
+    method: function() {
+        alert('Hello');
+    }
+};
+
+function objectRecursion(obj) {
+    for (key in obj) {
+        //if (obj[key])
+        console.log(obj[key])
+    }
+
+
+
+    return obj;
+}
+
+console.log(objectRecursion(initialObj))

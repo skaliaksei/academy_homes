@@ -26,24 +26,7 @@ function firstPositive(arrOfNum) {
 console.log(firstPositive([-1, 0, 2, 34, -2]))
 
 
-var initialObj = {
-    string: 'Vasya',
-    number: 30,
-    boolean: true,
-    undefined: undefined,
-    null: null,
-    array: [1, 2, 3],
-    object: {
-        string2: 'Petrov',
-        object2: {
-            array2: [{}, {}]
-        },
-        object3: {}
-    },
-    method: function() {
-        alert('Hello');
-    }
-};
+
 
 var person = {
     name: 'Aliaksei',
@@ -66,6 +49,23 @@ for (var key in person) {
     // console.log(person[key]);
     newPerson[key] = person[key];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
