@@ -65,18 +65,28 @@ var initialObj = {
     }
 };
 
+var initialObj2 = {
+    name: 'Aliaksei',
+    skills: {
+        HTML: true,
+        JS: true,
+        React: false
+    },
+    skills: [7, 4, 9, 8]
+}
+
 function isPrimitive(value) {
     var valueType = typeof(value);
 
-    if(valueType === 'string' ||
+    if (valueType === 'string' ||
         valueType === 'boolean' ||
         valueType === 'number' ||
         valueType === 'undefined' ||
         value == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function deepClone(input) {
@@ -88,7 +98,7 @@ function deepClone(input) {
         var newArr = [];
 
         for (var i = 0; i < input.length; i++) {
-            newArr[i] = deepClone(input[i]); //TODO push
+            newArr[i] = deepClone(input[i]);
         }
 
         return newArr;
@@ -96,17 +106,13 @@ function deepClone(input) {
         var newObj = {};
 
         for (var key in input) {
-            newObj[key] = deepClone(input[key], newObj);
+            newObj[key] = deepClone(input[key]);
         }
         return newObj;
     } else if (inputType == 'function') {
         return input;
     }
 }
-
-console.log(isPrimitive())
-console.log(deepClone(initialObj));
-
 
 var clonedObj = deepClone(initialObj);
 clonedObj.object.object2.array2[1].name = 'Vasya';
