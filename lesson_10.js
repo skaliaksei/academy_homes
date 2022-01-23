@@ -79,7 +79,7 @@ function isPrimitive(value) {
         }
 }
 
-function clone(input) {
+function deepClone(input) {
     var inputType = typeof input;
 
     if(isPrimitive(input)) {
@@ -88,7 +88,7 @@ function clone(input) {
         var newArr = [];
 
         for (var i = 0; i < input.length; i++) {
-            newArr[i] = clone(input[i]); //TODO push
+            newArr[i] = deepClone(input[i]); //TODO push
         }
 
         return newArr;
@@ -96,7 +96,7 @@ function clone(input) {
         var newObj = {};
 
         for (var key in input) {
-            newObj[key] = clone(input[key], newObj);
+            newObj[key] = deepClone(input[key], newObj);
         }
         return newObj;
     } else if (inputType == 'function') {
@@ -105,10 +105,10 @@ function clone(input) {
 }
 
 console.log(isPrimitive())
-console.log(clone(initialObj));
+console.log(deepClone(initialObj));
 
 
-var clonedObj = clone(initialObj);
+var clonedObj = deepClone(initialObj);
 clonedObj.object.object2.array2[1].name = 'Vasya';
 clonedObj.array.push(2);
 

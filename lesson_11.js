@@ -59,6 +59,7 @@ console.log(areAnagrams('кот', 'атк')); // false
 console.log(areAnagrams('кот', 'отко')); // false
 
 // Task_5
+// With slice()
 function divideArr(inputArr, divider) {
     var outputArr = [];
 
@@ -69,4 +70,15 @@ function divideArr(inputArr, divider) {
     return outputArr;
 }
 
-divideArr([1, 2, 3, 4, 5, 6, 7, 8], 10);
+// With splice()
+function divideArr2(inputArr, divider) {
+    var outputArr = [];
+
+    while(inputArr.length)
+        outputArr.push(inputArr.splice(0, divider));
+
+    return outputArr;
+}
+
+console.log(divideArr([1, 2, 3, 4, 5, 6, 7, 8], 3));
+console.log(divideArr2([1, 2, 3, 4, 5, 6, 7, 8], 3));
