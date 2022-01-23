@@ -2,9 +2,9 @@
 function filterNumbersArr(numbers) {
     var newArr = [];
 
-    numbers.forEach(function(item, i) { //TODO
-        if (item > 0)
-            newArr[newArr.length] = item;
+    numbers.forEach(function(el) {
+        if (el > 0)
+            newArr[newArr.length] = el;
     });
 
     return newArr;
@@ -14,13 +14,13 @@ filterNumbersArr([-1, 0, 2, 34, -2]);
 
 // Task_2
 function firstPositive(arrOfNum) {
-    var positiveNumber = arrOfNum.filter(findPositive);
+    var positiveNumbers = arrOfNum.filter(findPositive);
 
-    function findPositive(v) {
-        return v > 0;
+    function findPositive(item) {
+        return item > 0;
     }
 
-    return positiveNumber[0];
+    return positiveNumbers[0];
 }
 
 console.log(firstPositive([-1, 0, 2, 34, -2]));
