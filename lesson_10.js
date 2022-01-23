@@ -65,15 +65,52 @@ var initialObj = {
     }
 };
 
-function objectRecursion(obj) {
-    for (key in obj) {
-        //if (obj[key])
-        console.log(obj[key])
-    }
+function isPrimitive(value) {
+    var valueType = typeof(value);
 
-
-
-    return obj;
+    if(valueType === 'string' ||
+        valueType === 'boolean' ||
+        valueType === 'number' ||
+        valueType === 'undefined' ||
+        value == null) {
+            return true;
+        } else {
+            return false;
+        }
 }
 
-console.log(objectRecursion(initialObj))
+function clone(input) {
+    var inputType = typeof input;
+
+    if(isPrimitive(input)) {
+        return input;
+    } else if (Array.isArray(input)) {
+        var newArr = [];
+
+        for (var i = 0; i < input.length; i++) {
+            newArr[i] = clone(input[i]); //TODO push
+        }
+
+        return newArr;
+    } else if (inputType === 'object') {
+        var newObj = {};
+
+        for (var key in input) {
+            newObj[key] = clone(input[key], newObj);
+        }
+        return newObj;
+    } else if (inputType == 'function') {
+        return input;
+    }
+}
+
+console.log(isPrimitive())
+console.log(clone(initialObj));
+
+
+var clonedObj = clone(initialObj);
+clonedObj.object.object2.array2[1].name = 'Vasya';
+clonedObj.array.push(2);
+
+console.log(initialObj);
+console.log(clonedObj);
