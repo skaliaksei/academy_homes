@@ -44,8 +44,7 @@ Cat.prototype.stroke = function() {
 // barsik.dailyNorm(61);
 // barsik.feed().stroke();
 
-//Task_2
-
+// Task_2
 var initialObj = {
     string: 'Vasya',
     number: 30,
@@ -66,6 +65,15 @@ var initialObj = {
 };
 
 var initialObj2 = {
+    name: 'Aliaksei',
+    skills: {
+        HTML: true,
+        JS: true,
+        React: false
+    },
+    skills: [7, 4, 9, 8]
+}
+var initialObj3 = {
     name: 'Aliaksei',
     skills: {
         HTML: true,
@@ -120,3 +128,57 @@ clonedObj.array.push(2);
 
 console.log(initialObj);
 console.log(clonedObj);
+
+// Task_3
+function isItPrimitive(input) {
+    var inputType = typeof(input);
+
+    return (
+        inputType === "boolean",
+        inputType === "number",
+        inputType === "string",
+        inputType === "undefined",
+        input === null
+    );
+}
+
+// console.log(isItPrimitive(null))
+
+function check(input1, input2) {
+    // if (isItPrimitive(input1) && isItPrimitive(input2)) {
+    //     return input1 === input2;
+    // }
+
+    var input1type = typeof input1;
+    var input2type = typeof input2;
+
+    if (input1type !== input2type) {
+        return false;
+    }
+
+    if (input1type === "object") {
+        if (Object.keys(input1).length !== Object.keys(input2).length) {
+            return false;
+        }
+
+        for (var key in input1) {
+            if (!check(input1[key], input2[key])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    if (Array.isArray(input1) && Array.isArray(input2)) {
+        for (let index = 0; index < input1.length; index++) {
+            if (!check(input1[index], input2[index])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return input1.toString() === input2.toString();
+}
+
+console.log(check(initialObj2, initialObj3))
