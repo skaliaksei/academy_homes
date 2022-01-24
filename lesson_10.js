@@ -149,8 +149,8 @@ function check(input1, input2) {
     //     return input1 === input2;
     // }
 
-    var input1type = typeof input1;
-    var input2type = typeof input2;
+    var input1type = typeof(input1);
+    var input2type = typeof(input2);
 
     if (input1type !== input2type) {
         return false;
