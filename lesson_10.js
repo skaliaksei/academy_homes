@@ -1,6 +1,6 @@
 // Task_1
 function Animal(name) {
-    this._name = name;
+    this.name = name;
     this._foodAmount = 50;
 }
 
@@ -8,13 +8,13 @@ Animal.prototype.feed = function() {
     console.log('Насыпаем в миску ' + this.dailyNorm() + ' корма.');
 };
 
-Animal.prototype.formatFoodAmount = function() {
+Animal.prototype._formatFoodAmount = function() {
     return this._foodAmount + ' гр.';
 };
 
 Animal.prototype.dailyNorm = function(amount) {
     //GET:
-    if (!arguments.length)  return this.formatFoodAmount();
+    if (!arguments.length)  return this._formatFoodAmount();
     //SET:
     if (amount < 50 || amount > 100) {
         throw new Error('Значение должно быть в диапазоне от 50 до 100');
@@ -30,7 +30,7 @@ Cat.prototype = Object.create(Animal.prototype);
 Cat.prototype.constructor = Cat;
 
 Cat.prototype.feed = function() {
-    Animal.prototype.feed.apply(this);
+    Animal.prototype.feed.call(this);
     console.log('Кот доволен ^_^');
     return this;
 };

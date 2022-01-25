@@ -1,13 +1,8 @@
 //Task_1
 function filterNumbersArr(numbers) {
-    var newArr = [];
-
-    numbers.forEach(function(el) {
-        if (el > 0)
-            newArr[newArr.length] = el;
+    return numbers.filter(function(el) {
+        return el > 0;
     });
-
-    return newArr;
 }
 
 filterNumbersArr([-1, 0, 2, 34, -2]);
