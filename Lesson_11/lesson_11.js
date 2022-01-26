@@ -9,44 +9,23 @@ filterNumbersArr([-1, 0, 2, 34, -2]);
 
 // Task_2
 function firstPositive(arrOfNum) {
-    var positiveNumbers = arrOfNum.filter(findPositive);
-
-    function findPositive(item) {
-        return item > 0;
-    }
-
-    return positiveNumbers[0];
+    return arrOfNum.find(function(item) {
+		return item > 0;
+	});
 }
 
-console.log(firstPositive([-1, 0, 2, 34, -2]));
+console.log(firstPositive([-1, 0, 1, 34, -2]));
 
 // Task_3
-var word = ' ШалАш';
-
 function isPalindrome(inputWord) {
-    var output = false;
-    inputWord = inputWord.trim().toLowerCase();
-    var mirrorWord = inputWord.split('').reverse().join('');
-
-    if (mirrorWord === inputWord)
-        output = true;
-
-    return output;
+	return inputWord.trim().toLowerCase().split('').reverse().join('') === inputWord.trim().toLowerCase();
 }
 
-console.log(isPalindrome(word))
+console.log(isPalindrome('ШалАш'));
 
 // Task_4
 function areAnagrams(firstWord, secondWord) {
-    var output = false;
-
-    firstWord = firstWord.split('').sort().join('');
-    secondWord = secondWord.split('').sort().join('');
-
-    if (firstWord === secondWord)
-        output = true;
-
-    return output;
+    return firstWord.trim().toLowerCase().split('').sort().join('') === secondWord.trim().toLowerCase().split('').sort().join('');
 }
 
 console.log(areAnagrams('кот', 'отк')); // true
