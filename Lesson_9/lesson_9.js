@@ -28,7 +28,7 @@ function Animal(name) {
     }
 }
 
-function Cat() {
+function Cat(name) {
     Animal.apply(this, arguments);
 
     var animalFeed = this.feed;
