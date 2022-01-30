@@ -19,3 +19,20 @@ function showTime(inputArr) {
 }
 
 console.log(showTime(inputArray));
+
+// Task 3
+var inputText = 'Lorem ipsum dolor sit';
+
+function countVowels(inputStr) {
+    var VOWELS = ['a', 'e', 'i', 'o', 'u'];
+    var count = 0;
+
+    for (var i = 0; i < inputStr.length; i++) {
+        if (VOWELS.indexOf(inputStr[i]) >= 0)
+            count++;
+    }
+
+    return count;
+}
+
+console.log(countVowels(inputText)); // 7
