@@ -1,25 +1,21 @@
 // Task 1
 var arrOfNames = ['Aliaksei', 'Sergei', 'Oleg', 'Eugenij', 'Alice', 'Alia', 'Alla', 'Elizaveta', 'Ekaterina'];
 
-function createObj(inputArr) {
+function createObjects(inputArr) {
     return inputArr.map(function(item) {
         return { name: item };
     });
 }
 
-console.log(createObj(arrOfNames));
+console.log(createObjects(arrOfNames));
 
 // Task 2
 var inputArray = ['23', '34', '00'];
 
 function showTime(inputArr) {
-    var outputTime = '';
-
-    inputArr.forEach(function(item) {
-        outputTime += ' : ' + item;
-    });
-
-    return ('Текущее время') + outputTime;
+    return inputArr.reduce(function(sum, current) {
+        return sum + ' : ' + current;
+    }, 'Текущее время');
 }
 
 console.log(showTime(inputArray));
