@@ -1,194 +1,194 @@
 // Task 5
-// var startRange = 2, //Начало диапазона
-//     endRange = 10;  //Конец диапазона
-// var arrSimpleNums = []; //Массив для простых чисел
+var startRange = 2, //Начало диапазона
+    endRange = 10;  //Конец диапазона
+var arrSimpleNums = []; //Массив для простых чисел
 
-// for (var i = startRange; i <= endRange; i++) {
-//     if (checkSimple(i)) {
-//         arrSimpleNums.push(i);
-//     }
-// }
+for (var i = startRange; i <= endRange; i++) {
+    if (checkSimple(i)) {
+        arrSimpleNums.push(i);
+    }
+}
 
-// console.log(arrSimpleNums);
-// console.log(outputString(arrSimpleNums));
+console.log(arrSimpleNums);
+console.log(outputString(arrSimpleNums));
 
-// function checkSimple(num) { //функция проверки на простоту
-//     var isSimple = true;
+function checkSimple(num) { //функция проверки на простоту
+    var isSimple = true;
 
-//     if(num > 1) {
-//         for (var j = 2; j < num; j++) {
-//             if (num % j == 0) {
-//                 isSimple = false;
-//             }
-//         }
-//     } else {
-//         isSimple = false;
-//     }
+    if(num > 1) {
+        for (var j = 2; j < num; j++) {
+            if (num % j == 0) {
+                isSimple = false;
+            }
+        }
+    } else {
+        isSimple = false;
+    }
 
-//     return isSimple;
-// }
+    return isSimple;
+}
 
-// function outputString(inputArray) {
-//     var output = String(inputArray[0]);
-//     for (var i = 1; i < inputArray.length; i++) {
-//         output += ', ' + inputArray[i];
-//     }
+function outputString(inputArray) {
+    var output = String(inputArray[0]);
+    for (var i = 1; i < inputArray.length; i++) {
+        output += ', ' + inputArray[i];
+    }
 
-//     console.log(output);
-// }
-
-
-// function outer() {
-//     var count = 0;
-//     return function() {
-//         count++;
-//         console.log(count);
-//     }
-// }
-
-// let out1 = outer();
-// let out2 = outer();
-
-// out1();
-// out1();
-// out1();
-// out2();
-// out2();
-// out1();
-// out1();
+    console.log(output);
+}
 
 
-//Recursion
+function outer() {
+    var count = 0;
+    return function() {
+        count++;
+        console.log(count);
+    }
+}
 
-// let t = 0;
+let out1 = outer();
+let out2 = outer();
 
-// function recursion(t) {
-//     if (t < 100) {
-//         recursion(t += 1);
-//     }
-//     console.log(t);
-// }
+out1();
+out1();
+out1();
+out2();
+out2();
+out1();
+out1();
 
-//recursion(t)
+
+// Recursion
+
+let t = 0;
+
+function recursion(t) {
+    if (t < 100) {
+        recursion(t += 1);
+    }
+    console.log(t);
+}
+
+recursion(t)
 
 
 
 // Task 1
 // С использованием цикла
-// function sumTo(n) {
-//     var output = 0;
+function sumTo(n) {
+    var output = 0;
 
-//     for (var i = n; i > 0; i--) {
-//         output += i;
-//     }
+    for (var i = n; i > 0; i--) {
+        output += i;
+    }
 
-//     return output;
-// }
+    return output;
+}
 
-// console.log(sumTo(4));
+console.log(sumTo(4));
 
 // С использованием рекурсии
-// function sumTo(n) {
-//     if (n == 1) {
-//         return n;
-//     } else {
-//         return n + sumTo(n - 1);
-//     }
-// }
+function sumTo(n) {
+    if (n == 1) {
+        return n;
+    } else {
+        return n + sumTo(n - 1);
+    }
+}
 
 // or -->
 
 
-// function sumTo(n) {
-//     return (n == 1) ? n : n + sumTo(n - 1);
-// }
+function sumTo(n) {
+    return (n == 1) ? n : n + sumTo(n - 1);
+}
 
-// console.log(sumTo(10))
+console.log(sumTo(10))
 
-// // Task 2
-// // Факториал
-// function factorial(n) {
-//     if (n > 1) {
-//         return n * factorial(n - 1);
-//     } else {
-//         return n;
-//     }
-// }
+// Task 2
+// Факториал
+function factorial(n) {
+    if (n > 1) {
+        return n * factorial(n - 1);
+    } else {
+        return n;
+    }
+}
 
 
-// console.log(factorial(5));
+console.log(factorial(5));
 
 // Task 3
-//Числа Фибоначчи
+// Числа Фибоначчи
 
-// function fib(n) {
-//     if (n <= 1) {
-//         return n;
-//     } else {
-//         return fib(n - 1) + fib(n - 2);
-//     }
-// }
+function fib(n) {
+    if (n <= 1) {
+        return n;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    }
+}
 
-// console.log(fib(50));
+console.log(fib(50));
 
 
 
 // -----------
-// function counter(x) {
-//     debugger;
-//     if (x < 3) {
-//         x++;
-//         console.log(counter(x));
-//     } else {
-//         return x;
-//     }
-// }
+function counter(x) {
+    debugger;
+    if (x < 3) {
+        x++;
+        console.log(counter(x));
+    } else {
+        return x;
+    }
+}
 
-// console.log(counter(1));
+console.log(counter(1));
 
 
 // -------------
-// var num = 0;
+var num = 0;
 
-// function f() {
-//     if (1) {
-//         num = true;
-//     } else {
-//        var num = false;
-//     }
+function f() {
+    if (1) {
+        num = true;
+    } else {
+       var num = false;
+    }
 
-//     console.log(num);
-// }
+    console.log(num);
+}
 
-// f();
+f();
 
 // ---------------
-// var num = 0;
+var num = 0;
 
-// function f() {
-//     var num = 5;
-//     console.log(num);
-// }
+function f() {
+    var num = 5;
+    console.log(num);
+}
 
-// f();
+f();
 
-// console.log(num);
+console.log(num);
 
-// count = 0;
+count = 0;
 
 
-// function rec() {
-//     //console.log(count++)
-//     count++;
+function rec() {
+    //console.log(count++)
+    count++;
 
-//     if (count < 10) {
-//         rec();
-//     }
-//         return console.log(count);
+    if (count < 10) {
+        rec();
+    }
+        return console.log(count);
 
-// }
+}
 
-// rec();
+rec();
 
 
 // С использованием рекурсии
