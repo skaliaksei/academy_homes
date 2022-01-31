@@ -36,3 +36,28 @@ function countVowels(inputStr) {
 }
 
 console.log(countVowels(inputText)); // 7
+
+// Task 4
+var STARTTEXT = "Привет, студент! Студент... Как дела, студент?";
+
+function transformParagraph(inputText) {
+    var outputArr = inputText.split(/[\!\.\?]/).filter(function(item) {
+        return item.length > 0;
+    }).map(function(item) {
+        return item.trim();
+    });
+
+    outputArr.forEach(function(item) {
+        var SYMBOLS = [' ', ','];
+        var countOfSymbols = 0;
+
+        for (var i = 0; i < item.length; i++) {
+            if (SYMBOLS.indexOf(item[i]) >= 0)
+                countOfSymbols++;
+        }
+
+        console.log(item + ': ' + (item.length - countOfSymbols));
+    });
+}
+
+transformParagraph(STARTTEXT);
