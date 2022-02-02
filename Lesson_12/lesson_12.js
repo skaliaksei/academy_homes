@@ -70,6 +70,7 @@ function findRepeats(inputText) {
         return item.length > 0;
     });
 	var objOfWords = [];
+<<<<<<< HEAD
 
 	for (var i = 0; i < arrOfWords.length; i++) {
 		arrOfWords[i] = arrOfWords[i].toLowerCase();
@@ -78,13 +79,29 @@ function findRepeats(inputText) {
 	for (var i = 0; i < arrOfWords.length; i++) {
 
 
+=======
+	
+	for (var i = 0; i < arrOfWords.length; i++) {
+		arrOfWords[i] = arrOfWords[i].toLowerCase();
+	}
+	
+	for (var i = 0; i < arrOfWords.length; i++) {
+		
+		
+>>>>>>> 6bf1351ca61bb7b124d02f77c8954c76a290dfce
 	    var currentWordCount = objOfWords[arrOfWords[i]];
 		var count = currentWordCount ? currentWordCount : 0;
 		objOfWords[arrOfWords[i]] = count + 1;
 	}
+<<<<<<< HEAD
 
 	//arrOfWords = arrOfWords.sort();
 
+=======
+	
+	//arrOfWords = arrOfWords.sort();
+	
+>>>>>>> 6bf1351ca61bb7b124d02f77c8954c76a290dfce
 	console.log(objOfWords);
 }
 
