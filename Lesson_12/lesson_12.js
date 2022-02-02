@@ -72,6 +72,7 @@ function findRepeats(inputText) {
     });
 	var objOfWords = [];
 
+    // Обоезаем лишние пробелы
 	for (var i = 0; i < arrOfWords.length; i++) {
 		arrOfWords[i] = arrOfWords[i].toLowerCase();
 	}
