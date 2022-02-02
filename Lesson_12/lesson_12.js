@@ -72,21 +72,22 @@ function findRepeats(inputText) {
     });
 	var objOfWords = [];
 
-    // Обоезаем лишние пробелы
+    // Приводим к нижнему регистру
 	for (var i = 0; i < arrOfWords.length; i++) {
 		arrOfWords[i] = arrOfWords[i].toLowerCase();
 	}
 
+    // Создаем массив объектов со свойствами (Слово, число повторений)
     for (var i = 0; i < arrOfWords.length; i++) {
         //Находим позицию в массиве объектов
         var currentPosition = findValueInArray(objOfWords, String(arrOfWords[i]));
 
-        // Если такой уже есть в objOfWords, то увеличиваем повторение
+        // Если такое слово уже есть в objOfWords, то увеличиваем повторение
         if (currentPosition != null) {
             objOfWords[currentPosition].repeats += 1;
         // Иначе, добавляем новый объект
         } else {
-            objOfWords.push({value: String(arrOfWords[i]), repeats: 1})
+            objOfWords.push({value: String(arrOfWords[i]), repeats: 0}) //за начальное значение повторений брал ноль! т.е. если слово встречается единожды, то считаем, что повторений нет
         }
     }
 
