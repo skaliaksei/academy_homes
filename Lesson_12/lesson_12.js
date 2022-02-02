@@ -62,21 +62,30 @@ function transformParagraph(inputText) {
 
 transformParagraph(STARTTEXT);
 
-// Task_5
+// Task_5 (не доделал)
 var TEXT = "Lorem ipsum ut enim ad minima veniam, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem!"
 
 function findRepeats(inputText) {
 	var arrOfWords = inputText.split(/[\!\.\?\' '\,]/).filter(function(item) {
         return item.length > 0;
-    });	
+    });
+	var objOfWords = [];
 	
 	for (var i = 0; i < arrOfWords.length; i++) {
 		arrOfWords[i] = arrOfWords[i].toLowerCase();
 	}
 	
+	for (var i = 0; i < arrOfWords.length; i++) {
+		
+		
+	    var currentWordCount = objOfWords[arrOfWords[i]];
+		var count = currentWordCount ? currentWordCount : 0;
+		objOfWords[arrOfWords[i]] = count + 1;
+	}
+	
 	//arrOfWords = arrOfWords.sort();
 	
-	console.log(arrOfWords);
+	console.log(objOfWords);
 }
 
 findRepeats(TEXT);
