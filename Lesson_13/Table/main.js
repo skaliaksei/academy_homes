@@ -21,8 +21,16 @@ tbody.onclick = function(e) {
         input.value = ceilText;
         input.focus();
 
+        // При потере фокукса над input
         input.onblur = function(e) {
             e.target.offsetParent.innerHTML = e.target.value;
+        };
+
+        // Событие при нажатии Enter
+        input.onkeydown = function(e) {
+            if(e.keyCode == 13) {
+                input.blur();
+            }
         };
     }
 };
