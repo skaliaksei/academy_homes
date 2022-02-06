@@ -1,7 +1,6 @@
 var table = document.getElementsByTagName('table')[0];
 var tbody = table.firstElementChild;
 var button = document.getElementsByClassName('button')[0];
-var count = 0;
 
 
 button.onclick = function addRow() {
@@ -10,8 +9,6 @@ button.onclick = function addRow() {
 
     tbody.insertBefore(newRow, firstRow);
     newRow.innerHTML = '<td></td><td></td><td></td>';
-    console.log('add row ' + count);
-    count++;
 };
 
 tbody.onclick = function(e) {
@@ -26,8 +23,6 @@ tbody.onclick = function(e) {
 
         input.onblur = function(e) {
             e.target.offsetParent.innerHTML = e.target.value;
-            console.log(e.target.value);
         };
     }
-
 };
