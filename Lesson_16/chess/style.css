@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: #000;
+}
+
+body {
+    height: 100vh;
+    padding: 20px;
+}
+
+.container__input {
+    margin-bottom: 10px;
+}
+
+.container__input span{
+    font-weight: bold;
+}
+
+button{
+    margin-left: 20px;
+}

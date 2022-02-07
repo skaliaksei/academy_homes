@@ -1,7 +1,31 @@
 var container = document.getElementsByClassName('container')[0];
-var firstParagraph = document.createElement('p');
-var secondParagraph = document.createElement('p');
-var button = document.getElementsByTagName('button')[0];
+// var firstParagraph = document.createElement('p');
+// var secondParagraph = document.createElement('p');
+console.log(container);
+
+var xInput = container.lastElementChild.children[1];
+var yInput = container.firstElementChild.children[1];
+var btn = document.getElementsByTagName('button')[0];
+
+btnDisable();
+
+function btnDisable() {
+    btn.disabled = true;
+    btn.style.color = '#969696';
+}
+
+function btnEnable() {
+    btn.disabled = false;
+    btn.style.color = '#000';
+}
+
+container.onkeyup = function(e) {
+    if(xInput.value.length && yInput.value.length) {
+        btnEnable();
+    } else
+        btnDisable();
+};
+
 
 container.appendChild(firstParagraph);
 firstParagraph.innerHTML = 'Some text <a href="#">Link 1</a><a href="#">Link 2</a>';
