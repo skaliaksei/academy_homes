@@ -19,12 +19,23 @@ function btnEnable() {
     btn.style.color = '#000';
 }
 
-container.onkeyup = function(e) {
+container.onkeyup = function() {
     if(xInput.value.length && yInput.value.length) {
         btnEnable();
     } else
         btnDisable();
 };
+
+btn.onclick = function() {
+    var x = parseInt(xInput.value);
+    var y = parseInt(yInput.value);
+
+    if ((x > 0 && x < 10) && (y > 0 && y < 10)) {
+        console.log('Validate !');
+    } else {
+
+    }
+}
 
 
 container.appendChild(firstParagraph);
