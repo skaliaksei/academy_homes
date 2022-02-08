@@ -29,15 +29,10 @@ container.onkeyup = function() {
 };
 
 btn.onclick = function() {
-    // if (xInput.value % 1 == 0 && xInput.value % 1 == 0) {}
+    var x = Number(xInput.value);
+    var y = Number(yInput.value);
 
-
-    console.log(xInput.value);
-    console.log(yInput.value);
-    var x = parseInt(xInput.value);
-    var y = parseInt(yInput.value);
-
-    if ((x > 0 && x <= 10) && (y > 0 && y <= 10)) {
+    if ((x > 0 && x <= 10) && (y > 0 && y <= 10) && (x % 1 == 0) && (y % 1 == 0)) {
         createChess(x, y); // Создаем доску
         paintChess(x, y); // Закрашиваем доску
     } else {
