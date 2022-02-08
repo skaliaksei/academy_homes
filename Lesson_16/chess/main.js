@@ -79,3 +79,70 @@ function getLink(e) {
         alert('Link was be save.');
     }
 }
+
+
+
+
+//--------------------------------------------------------
+var table = document.createElement("table");
+table.border = '1';
+var x = 4;
+var y = 5;
+
+
+
+for (var i = 0; i < y; i++) {
+    var tr = document.createElement('tr');
+	
+    for (var j = 0; j < x; j++) {
+	
+        var td = document.createElement('td');
+        if (i%2 == j%2) {
+            td.className = "white";
+        } else {
+            td.className = "black";
+        }
+        tr.appendChild(td);
+		
+    }
+	
+    table.appendChild(tr);
+}
+
+whiteCeils = document.getElementsByClassName('white');
+
+function paintChess() {
+	var modeOfPaint = sessionStorage.getItem('mode');
+	console.log('mode is: ' + modeOfPaint);
+	
+	for (var i = 0; i < x; i++) {
+		for (var j = 0; j < y; j++) {
+		
+			if (modeOfPaint === 'positive') {
+				if (i%2 == j%2) {
+					table.children[j].children[i].style.backgroundColor = '#fff';
+				} else {
+					table.children[j].children[i].style.backgroundColor = '#000';
+				}
+				sessionStorage.setItem('mode', 'negative');
+			} else {
+				if (i%2 !== j%2) {
+					table.children[j].children[i].style.backgroundColor = '#fff';
+				} else {
+					table.children[j].children[i].style.backgroundColor = '#000';
+				}
+				sessionStorage.setItem('mode', 'positive');
+			}	
+
+		}
+	}
+}
+
+paintChess();
+
+
+document.body.appendChild(table);
+
+table.onclick = function() {
+	paintChess();
+}
