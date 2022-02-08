@@ -1,7 +1,7 @@
 var wrapper = document.getElementsByClassName('wrapper')[0];
 var container = document.getElementsByClassName('container')[0];
-var xInput = container.lastElementChild.children[1];
-var yInput = container.firstElementChild.children[1];
+var xInput = container.firstElementChild.children[1];
+var yInput = container.lastElementChild.children[1];
 var btn = document.getElementsByTagName('button')[0];
 
 // Создание контейнера для будущей доски:
@@ -29,23 +29,27 @@ container.onkeyup = function() {
 };
 
 btn.onclick = function() {
+    // if (xInput.value % 1 == 0 && xInput.value % 1 == 0) {}
+
+
+    console.log(xInput.value);
+    console.log(yInput.value);
     var x = parseInt(xInput.value);
     var y = parseInt(yInput.value);
 
-    if ((x > 0 && x < 10) && (y > 0 && y < 10)) {
-        console.log('Validate !');
+    if ((x > 0 && x <= 10) && (y > 0 && y <= 10)) {
         createChess(x, y); // Создаем доску
         paintChess(x, y); // Закрашиваем доску
     } else {
-        console.log('Value must be 1 - 9');
+        alert('Value must be 1 - 10');
     }
 }
 
-
+// Функция создания доски:
 function createChess(x, y) {
 
     if (board.childElementCount > 0)
-        board.firstElementChild.remove(); // Удаляем предыдушую доску если она существует
+        board.firstElementChild.remove(); // Удаляем предыдушую доску если она уже существует
 
     var table = document.createElement('table');
     board.appendChild(table);
@@ -58,17 +62,19 @@ function createChess(x, y) {
         for (var j = 0; j < x; j++) {
             var td = document.createElement('td');
             tr.appendChild(td);
+            td.style.width = '30px';
+            td.style.height = '30px';
         }
 
         table.appendChild(tr);
     }
 }
 
+// Функция разукрашивания доски:
 function paintChess(x, y) {
     var table = document.getElementsByClassName('table')[0];
-    // console.log(table);
 	var modeOfPaint = sessionStorage.getItem('mode');
-	console.log('mode is: ' + modeOfPaint);
+	// console.log('mode is: ' + modeOfPaint);
 
 	for (var i = 0; i < x; i++) {
 		for (var j = 0; j < y; j++) {
@@ -77,7 +83,7 @@ function paintChess(x, y) {
 				if (i % 2 == j % 2) {
 					table.children[j].children[i].style.backgroundColor = '#fff';
 				} else {
-					table.children[j].children[i].style.backgroundColor = '#000';
+					table.children[j].children[i].style.backgroundColor = '#0b0049';
 				}
 				sessionStorage.setItem('mode', 'negative');
 			} else {
@@ -85,17 +91,14 @@ function paintChess(x, y) {
                     // console.log(tab);
 					table.children[j].children[i].style.backgroundColor = '#fff';
 				} else {
-					table.children[j].children[i].style.backgroundColor = '#000';
+					table.children[j].children[i].style.backgroundColor = '#0b0049';
 				}
 				sessionStorage.setItem('mode', 'positive');
 			}
-
 		}
 	}
 
     table.onclick = function() {
         paintChess(x, y);
     }
-
-
 }
