@@ -20,5 +20,10 @@ body {
 }
 
 button {
-    margin-left: 20px;
+    margin: 0 0 20px 20px;
+}
+
+td {
+    width: 30px;
+    height: 30px;
 }

@@ -1,11 +1,13 @@
+var wrapper = document.getElementsByClassName('wrapper')[0];
 var container = document.getElementsByClassName('container')[0];
-// var firstParagraph = document.createElement('p');
-// var secondParagraph = document.createElement('p');
-console.log(container);
-
 var xInput = container.lastElementChild.children[1];
 var yInput = container.firstElementChild.children[1];
 var btn = document.getElementsByTagName('button')[0];
+
+// Создание контейнера для будущей доски:
+var board = document.createElement('div');
+wrapper.appendChild(board);
+wrapper.lastChild.className = 'chess';
 
 btnDisable();
 
@@ -32,117 +34,68 @@ btn.onclick = function() {
 
     if ((x > 0 && x < 10) && (y > 0 && y < 10)) {
         console.log('Validate !');
+        createChess(x, y); // Создаем доску
+        paintChess(x, y); // Закрашиваем доску
     } else {
-
+        console.log('Value must be 1 - 9');
     }
 }
 
 
-container.appendChild(firstParagraph);
-firstParagraph.innerHTML = 'Some text <a href="#">Link 1</a><a href="#">Link 2</a>';
+function createChess(x, y) {
 
-container.appendChild(secondParagraph);
-secondParagraph.innerHTML = 'Some text <a href="http://google.com">Link 3</a><a href="http://yandex.ru">Link 4</a>';
+    if (board.childElementCount > 0)
+        board.firstElementChild.remove(); // Удаляем предыдушую доску если она существует
 
-button.onclick = function() {
-    var length = firstParagraph.children.length;
+    var table = document.createElement('table');
+    board.appendChild(table);
+    board.lastChild.className = 'table';
+    table.border = '1';
 
-    for (var i = 0; i < length; i++)
-        firstParagraph.children[i].classList.toggle('changed');
-};
+    for (var i = 0; i < y; i++) {
+        var tr = document.createElement('tr');
 
-secondParagraph.addEventListener('click', getLink);
-
-function getLink(e) {
-    e.preventDefault();
-
-    // if (e.target.localName == 'a') {
-    //     console.log(e.target.href);
-    // }
-
-    //Work with Local Storage:
-    var key = String(e.target.innerHTML);
-    var value = {};
-
-    value.path = String(e.target.href);
-
-    if (localStorage.getItem(String(e.target.innerHTML))) {
-        var getPath = localStorage.getItem(e.target.innerHTML);
-        var parsePath = JSON.parse(getPath).path;
-
-        alert(parsePath);
-    } else {
-        localStorage.setItem(key, JSON.stringify(value));
-        e.target.href = '#';
-        console.log(e);
-
-        alert('Link was be save.');
-    }
-}
-
-
-
-
-//--------------------------------------------------------
-var table = document.createElement("table");
-table.border = '1';
-var x = 4;
-var y = 5;
-
-
-
-for (var i = 0; i < y; i++) {
-    var tr = document.createElement('tr');
-	
-    for (var j = 0; j < x; j++) {
-	
-        var td = document.createElement('td');
-        if (i%2 == j%2) {
-            td.className = "white";
-        } else {
-            td.className = "black";
+        for (var j = 0; j < x; j++) {
+            var td = document.createElement('td');
+            tr.appendChild(td);
         }
-        tr.appendChild(td);
-		
+
+        table.appendChild(tr);
     }
-	
-    table.appendChild(tr);
 }
 
-whiteCeils = document.getElementsByClassName('white');
-
-function paintChess() {
+function paintChess(x, y) {
+    var table = document.getElementsByClassName('table')[0];
+    // console.log(table);
 	var modeOfPaint = sessionStorage.getItem('mode');
 	console.log('mode is: ' + modeOfPaint);
-	
+
 	for (var i = 0; i < x; i++) {
 		for (var j = 0; j < y; j++) {
-		
+
 			if (modeOfPaint === 'positive') {
-				if (i%2 == j%2) {
+				if (i % 2 == j % 2) {
 					table.children[j].children[i].style.backgroundColor = '#fff';
 				} else {
 					table.children[j].children[i].style.backgroundColor = '#000';
 				}
 				sessionStorage.setItem('mode', 'negative');
 			} else {
-				if (i%2 !== j%2) {
+				if (i % 2 !== j % 2) {
+                    // console.log(tab);
 					table.children[j].children[i].style.backgroundColor = '#fff';
 				} else {
 					table.children[j].children[i].style.backgroundColor = '#000';
 				}
 				sessionStorage.setItem('mode', 'positive');
-			}	
+			}
 
 		}
 	}
-}
 
-paintChess();
+    table.onclick = function() {
+        paintChess(x, y);
+    }
 
 
-document.body.appendChild(table);
-
-table.onclick = function() {
-	paintChess();
 }
