@@ -11,7 +11,7 @@ btn.onclick = function() {
     } else {
         var xhr = new XMLHttpRequest();
 
-        xhr.open('GET', 'https://reqres.in/api2/users?page=2', true);
+        xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
 
         xhr.send();
 
@@ -117,5 +117,5 @@ function createErrorMessage(status) {
     var card = document.createElement('div');
     container.appendChild(card);
     container.lastChild.className = 'area';
-    container.lastChild.innerHTML = '<div class=\"area__error\">Wrong answer from server (ERROR ' + status + ')</div>';
+    container.lastChild.innerHTML = '<div class=\"area__error\">Something went wrong when loading data (ERROR ' + status + ')</div>';
 }
