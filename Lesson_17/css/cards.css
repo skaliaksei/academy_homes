@@ -1,0 +1,55 @@
+.area {
+
+}
+
+.area__tabs {
+    display: flex;
+    justify-content: flex-start;
+    height: 30px;
+}
+
+.area__tab-item {
+    background-color: #15008f;
+    height: 100%;
+    width: 90px;
+    margin-right: 5px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.active{
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+.area__content {
+    display: flex;
+    justify-content: flex-start;
+    padding: 15px 20px;
+    background-color: #fff;
+}
+
+.area__photo {
+    width: 128px;
+    height: 128px;
+    /* background-color: #1d1d1d; */
+    margin-right: 15px;
+}
+
+.area__personal-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.first-name {
+    margin-top: 40px;
+}
