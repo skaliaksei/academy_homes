@@ -11,18 +11,24 @@ btn.onclick = function() {
     } else {
         var xhr = new XMLHttpRequest();
 
-        xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
+        xhr.open('GET', 'https://reqres.in/api2/users?page=2', true);
+
         xhr.send();
 
         xhr.onload = function() {
             var statusType = +String(this.status)[0];
 
-            arrayOfUsers = (statusType === 2) ? JSON.parse(this.response).data : this.status;
-            // And save our array in localStorage:
-            localStorage.setItem('usersData', JSON.stringify(arrayOfUsers));
+            if (statusType === 2) {
+                arrayOfUsers = JSON.parse(this.response).data;
 
-            // Creating tabs after load:
-            createTabs();
+                // And save our array in localStorage:
+                localStorage.setItem('usersData', JSON.stringify(arrayOfUsers));
+
+                // Creating tabs after load:
+                createTabs();
+            } else {
+                createErrorMessage(this.status);
+            }
         };
     }
 };
@@ -100,4 +106,16 @@ function createMainBlock(id) {
 
     // Insert surname:
     card.lastChild.children[1].lastChild.innerHTML = '<span class=\"last-name\">Last Name: ' + arrayOfUsers[id - 1].last_name + '</span>';
+}
+
+function createErrorMessage(status) {
+    // Remove main area if it was create early:
+    if (container.childElementCount > 1) {
+        container.children[1].remove();
+    }
+
+    var card = document.createElement('div');
+    container.appendChild(card);
+    container.lastChild.className = 'area';
+    container.lastChild.innerHTML = '<div class=\"area__error\">Wrong answer from server (ERROR ' + status + ')</div>';
 }
