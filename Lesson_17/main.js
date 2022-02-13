@@ -3,20 +3,28 @@ var btn = container.children[0];
 var arrayOfUsers = [];
 
 btn.onclick = function() {
-    var xhr = new XMLHttpRequest();
+    if (localStorage.getItem('usersData')) {
+        arrayOfUsers = JSON.parse(localStorage.getItem('usersData'));
 
-    xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
-    xhr.send();
-
-    xhr.onload = function() {
-	    var statusType = +String(this.status)[0];
-
-    	arrayOfUsers = (statusType === 2) ? JSON.parse(this.response).data : this.status;
-
-        // Creating tabs after load:
+        // Creating tabs after reading from localStorage:
         createTabs();
-    };
+    } else {
+        var xhr = new XMLHttpRequest();
 
+        xhr.open('GET', 'https://reqres.in/api/users?page=2', true);
+        xhr.send();
+
+        xhr.onload = function() {
+            var statusType = +String(this.status)[0];
+
+            arrayOfUsers = (statusType === 2) ? JSON.parse(this.response).data : this.status;
+            // And save our array in localStorage:
+            localStorage.setItem('usersData', JSON.stringify(arrayOfUsers));
+
+            // Creating tabs after load:
+            createTabs();
+        };
+    }
 };
 
 function createTabs() {
@@ -81,7 +89,6 @@ function createMainBlock(id) {
 
     // Insert content:
     var pathOfPhoto = arrayOfUsers[id - 1].avatar;
-    console.log(pathOfPhoto);
 
     card.lastChild.innerHTML = '<div class="area__photo"></div><div class="area__personal-data"><span class="first-name">First Name: Aliaksei</span><span class="last-name">Last Name: Skakun</span></div>'
 
